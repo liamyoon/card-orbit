@@ -1,0 +1,139 @@
+@use 'cover-theme';
+
+// 앞·뒤 표지와 네 옆면을 같은 회전체 아래에 배치한 닫힌 직육면체입니다.
+// overflow/filter/opacity를 이 노드에 적용하면 preserve-3d가 평면화됩니다.
+.book-object {
+  --half-book-depth: calc(var(--book-depth) / 2);
+
+  > .card-face {
+    border: 3px solid var(--back-color);
+    border-radius: 1px;
+    box-shadow: none;
+    transform: translateZ(var(--half-book-depth));
+
+    &.front::after {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 9px;
+      background: linear-gradient(90deg, #00000026, #ffffff30 35%, #00000012 55%, transparent);
+      pointer-events: none;
+    }
+
+    &.back {
+      transform: rotateY(180deg) translateZ(var(--half-book-depth));
+    }
+  }
+}
+
+.book-edge {
+  position: absolute;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.book-spine {
+  top: 0;
+  left: 0;
+  width: var(--book-depth);
+  height: 100%;
+  transform-origin: left center;
+  transform: translateZ(calc(-1 * var(--half-book-depth))) rotateY(-90deg);
+  background-color: var(--back-color);
+  color: cover-theme.$ink;
+  overflow: hidden;
+  @include cover-theme.texture;
+
+  .spine-artwork {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .spine-design {
+    position: absolute;
+    inset: 8px 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 13px 0;
+    border-block: 1px solid cover-theme.$rule;
+    background: linear-gradient(90deg, #00000020, transparent 25%, #ffffff0d 55%, #00000024);
+  }
+
+  &.has-image .spine-design {
+    background: #29202e88;
+    text-shadow: 0 1px 3px #00000080;
+  }
+}
+
+.spine-title {
+  min-height: 0;
+  max-height: 75%;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: Georgia, 'Noto Sans KR', serif;
+  font-size: clamp(8px, calc(var(--book-depth) * 0.35), 15px);
+  letter-spacing: 1.8px;
+  line-height: 1.15;
+}
+
+.spine-mark {
+  font-size: 9px;
+}
+
+.book-pages {
+  background-color: #f5f0e2;
+  // 앞·뒷표지 가장자리와 겹치는 얇은 테두리로 제본 두께를 표현합니다.
+  border: 2px solid var(--back-color);
+
+  &-right {
+    top: 0;
+    left: 100%;
+    width: var(--book-depth);
+    height: 100%;
+    transform-origin: left center;
+    transform: translateZ(var(--half-book-depth)) rotateY(90deg);
+    background-image:
+      linear-gradient(180deg, #00000012, transparent 12%, transparent 88%, #0000001c),
+      repeating-linear-gradient(90deg, #fffbed 0 1px, #cfc6b5 1px 2px, #f7f2e4 2px 3px);
+    box-shadow:
+      inset 3px 0 6px #00000015,
+      inset -3px 0 6px #00000015;
+  }
+
+  &-top,
+  &-bottom {
+    left: 0;
+    width: 100%;
+    height: var(--book-depth);
+    background-image: repeating-linear-gradient(
+      180deg,
+      #fffbed 0 1px,
+      #cfc6b5 1px 2px,
+      #f7f2e4 2px 3px
+    );
+  }
+
+  &-top {
+    top: 0;
+    transform-origin: center top;
+    transform: translateZ(calc(-1 * var(--half-book-depth))) rotateX(90deg);
+  }
+
+  &-bottom {
+    bottom: 0;
+    transform-origin: center bottom;
+    transform: translateZ(calc(-1 * var(--half-book-depth))) rotateX(-90deg);
+    box-shadow: inset 0 0 15px #00000020;
+  }
+}

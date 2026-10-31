@@ -1,0 +1,13 @@
+// 기본 뒷표지와 책등이 공유하는 금박 색상·사선 질감입니다.
+$ink: #f7f1de;
+$rule: #f5efdd70;
+
+@mixin texture {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 9px,
+    #ffffff05 9px,
+    #ffffff05 10px
+  );
+}

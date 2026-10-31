@@ -1,0 +1,69 @@
+@use 'cover-theme';
+
+.back-design {
+  height: 100%;
+  padding: 25px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: cover-theme.$ink;
+  border: 1px solid cover-theme.$rule;
+  margin: 8px;
+  height: calc(100% - 16px);
+  border-radius: 5px;
+  position: relative;
+  @include cover-theme.texture;
+}
+.back-small {
+  font-size: 6px;
+  letter-spacing: 1.3px;
+  text-align: center;
+  line-height: 1.8;
+}
+.back-orbit {
+  position: absolute;
+  top: 26%;
+  width: 105px;
+  height: 145px;
+  border: 1px solid #f6eed680;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transform: rotate(-25deg);
+  &::before {
+    position: absolute;
+    content: '';
+    inset: 8px -10px;
+    border: 1px solid #f6eed650;
+    border-radius: 50%;
+    transform: rotate(50deg);
+  }
+  & svg {
+    transform: rotate(25deg);
+  }
+}
+.back-name {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 20px;
+  text-align: center;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  position: absolute;
+  top: 72%;
+  left: 10px;
+  right: 10px;
+}
+.back-star {
+  position: absolute;
+  font-size: 16px;
+}
+.star-one {
+  top: 23%;
+  left: 16%;
+}
+.star-two {
+  top: 63%;
+  right: 15%;
+}

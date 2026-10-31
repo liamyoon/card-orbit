@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.tsbuildinfo
+*.log
+
+# 로컬 인증 및 환경변수
+/env/
+.env
+.env.*
+/docs/
+
+# 로컬 UI 검증 캡처
+/preview.jpg
+/*-preview.jpg

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+bun.lock
+public/
+preview.jpg
+/env/
+/docs/
+.env
+.env.*
+/*-preview.jpg

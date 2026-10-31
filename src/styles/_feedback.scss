@@ -1,0 +1,39 @@
+@use 'tokens' as t;
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 42px;
+  color: t.$text-muted;
+  font-size: 10px;
+}
+footer > span:first-child {
+  font-family: t.$mono;
+}
+.status-message:empty {
+  display: none;
+}
+.status-message {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px;
+  background: t.$raised;
+  border: 1px solid t.$border;
+  color: t.$text-primary;
+  box-shadow: 0 8px 30px #00000050;
+  border-radius: 5px;
+  max-width: 90vw;
+  z-index: 100;
+  font-size: 12px;
+  button {
+    display: grid;
+    place-items: center;
+  }
+}

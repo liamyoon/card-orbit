@@ -1,0 +1,82 @@
+@use 'tokens' as t;
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+  color: t.$text-primary;
+  background: t.$canvas;
+  color-scheme: dark;
+  font-synthesis: none;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  font-size: 13px;
+}
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: t.$border transparent;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button,
+a,
+label,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+  border: 0;
+  background: none;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+.drag-surface:focus-visible {
+  outline: 2px solid t.$focus-ring;
+  outline-offset: 3px;
+}
+button:disabled,
+input:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+.upload-zone,
+.back-upload {
+  transition:
+    background 0.15s,
+    box-shadow 0.15s,
+    transform 0.15s,
+    border-color 0.15s;
+}
+input[type='file'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+label:has(input[type='file']:focus-visible) {
+  outline: 2px solid t.$focus-ring;
+  outline-offset: 3px;
+}
+kbd {
+  font-family: t.$mono;
+  border: 1px solid t.$border;
+  border-radius: 3px;
+  padding: 1px 4px;
+}

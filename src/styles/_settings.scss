@@ -1,0 +1,246 @@
+@use 'tokens' as t;
+
+.setting-section,
+.object-settings {
+  border-bottom: 1px solid t.$border;
+  padding: 22px 0;
+}
+.setting-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.step-number {
+  font: 10px t.$mono;
+  color: t.$text-muted;
+}
+.setting-heading h3,
+.object-settings h3 {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+}
+.object-settings h3 {
+  margin-bottom: 14px;
+}
+.control-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  color: t.$text-muted;
+  margin-bottom: 12px;
+  > span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  > span:last-child {
+    color: t.$text-primary;
+    font: 11px t.$mono;
+  }
+}
+input[type='range'] {
+  accent-color: t.$accent;
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  margin: 0;
+  display: block;
+}
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: t.$text-muted;
+  margin-top: 10px;
+}
+.step-label {
+  margin: 20px 0 0;
+}
+.select-wrap {
+  position: relative;
+  svg {
+    position: absolute;
+    right: 7px;
+    pointer-events: none;
+  }
+  select {
+    appearance: none;
+    padding: 6px 25px 6px 9px;
+    font-size: 11px;
+    color: t.$text-primary;
+    background: t.$canvas;
+    border: 1px solid t.$border;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+.toggle {
+  width: 32px;
+  height: 18px;
+  background: #4a5360;
+  border-radius: 20px;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  span {
+    width: 12px;
+    height: 12px;
+    background: #e5e9ef;
+    border-radius: 50%;
+    transition: transform 0.2s;
+  }
+  &.on {
+    background: t.$accent;
+  }
+  &.on span {
+    transform: translateX(14px);
+    background: #102b27;
+  }
+}
+.intensity {
+  margin-top: 20px;
+}
+.back-settings {
+  border: 0;
+  padding-bottom: 0;
+}
+.all-badge {
+  margin-left: auto;
+  font-size: 9px;
+  color: t.$text-muted;
+  border: 1px solid t.$border;
+  border-radius: 3px;
+  padding: 3px 5px;
+}
+.back-preview-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.mini-back {
+  flex-shrink: 0;
+  width: 52px;
+  height: 82px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffffc4;
+  gap: 9px;
+  border: 2px solid #d2cbd8;
+  overflow: hidden;
+  span {
+    font-family: Georgia, serif;
+    font-size: 5px;
+    max-width: 100%;
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.back-preview-row b {
+  font-size: 12px;
+  font-weight: 500;
+}
+.back-preview-row p {
+  font-size: 10px;
+  color: t.$text-muted;
+  margin: 5px 0 0;
+}
+.swatches {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  button {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    color: white;
+  }
+  button:hover {
+    box-shadow: 0 0 0 2px t.$text-muted;
+  }
+}
+.back-text-label {
+  display: block;
+  font-size: 11px;
+  color: t.$text-muted;
+  margin-top: 18px;
+  input {
+    width: 100%;
+    border: 1px solid t.$border;
+    background: t.$canvas;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 9px;
+    color: t.$text-primary;
+    margin-top: 8px;
+  }
+}
+.back-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 5px;
+  border: 1px solid t.$border;
+  color: t.$text-primary;
+  font-size: 11px;
+  border-radius: 4px;
+  margin-top: 12px;
+  cursor: pointer;
+  &:hover {
+    background: t.$raised;
+    border-color: #637180;
+  }
+}
+.back-help,
+.book-help {
+  font-size: 10px;
+  color: t.$text-muted;
+  line-height: 1.8;
+  margin: 12px 0 0;
+}
+.restore-back {
+  font-size: 11px;
+  color: t.$accent;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+.object-mode-switch {
+  display: flex;
+  padding: 3px;
+  gap: 3px;
+  border-radius: 4px;
+  background: t.$canvas;
+  border: 1px solid t.$border;
+  button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    color: t.$text-muted;
+    &[aria-pressed='true'] {
+      color: t.$accent;
+      background: t.$raised;
+    }
+  }
+}
+.book-controls {
+  margin-top: 21px;
+}

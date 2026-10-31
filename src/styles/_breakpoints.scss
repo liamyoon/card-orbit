@@ -1,0 +1,21 @@
+// 큰 화면에서 작은 화면 순으로 적용해 기존 캐스케이드를 유지합니다.
+@mixin wide {
+  @media (min-width: 1450px) {
+    @content;
+  }
+}
+@mixin compact {
+  @media (max-width: 1100px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}

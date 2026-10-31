@@ -1,0 +1,79 @@
+@use 'tokens' as t;
+
+.direction {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 5px;
+  color: t.$text-muted;
+  background: t.$surface;
+  border: 1px solid t.$border;
+  &-up {
+    top: 0;
+    left: calc(50% - 17px);
+  }
+  &-down {
+    bottom: 0;
+    left: calc(50% - 17px);
+  }
+  &-left {
+    left: 0;
+    top: calc(50% - 17px);
+  }
+  &-right {
+    right: 0;
+    top: calc(50% - 17px);
+  }
+  span {
+    position: absolute;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    font-size: 10px;
+    background: t.$raised;
+    border: 1px solid t.$border;
+    color: t.$text-primary;
+    padding: 5px 8px;
+    border-radius: 4px;
+    top: calc(100% + 7px);
+    transition: opacity 0.15s;
+  }
+  &:hover,
+  &:focus-visible {
+    background: #263e3c;
+    color: t.$accent;
+    border-color: t.$accent;
+  }
+  &:hover span,
+  &:focus-visible span {
+    opacity: 1;
+  }
+  &-up span {
+    top: auto;
+    bottom: calc(100% + 7px);
+  }
+  &-left span {
+    left: 0;
+  }
+  &-right span {
+    right: 0;
+  }
+}
+.stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+@each $direction, $position in (up: 50% 0, down: 50% 100%, left: 0% 50%, right: 100% 50%) {
+  .stage.hover-#{$direction}::after {
+    opacity: 1;
+    background: radial-gradient(ellipse at $position, #8ad9ce14, transparent 60%);
+  }
+}
