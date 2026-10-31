@@ -2,6 +2,10 @@
 
 React + Vite + TypeScript + Bun으로 만든 브라우저 기반 카드 스튜디오입니다.
 
+[배포 페이지에서 사용하기](https://liamyoon.github.io/card-orbit/)
+
+[![Card Orbit 페이지 미리보기 — 이미지 목록, 카드 미리보기, 설정 패널](assets/readme/card-orbit.jpg)](https://liamyoon.github.io/card-orbit/)
+
 ## 실행
 
 ```sh
